@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { AllPlayersContainer } from '../containers';
+import { SignupFormContainer } from '../containers';
 
 const RoutesView = () => {
   return (
     <Switch>
-      <Route exact path="/" component={AllPlayersContainer} />
+      <Route exact path="/signup" component={SignupFormContainer} />
     </Switch>
   )
 }
