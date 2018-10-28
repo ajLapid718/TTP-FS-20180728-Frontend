@@ -9,6 +9,7 @@ const SignupFormView = props => {
         name="firstName"
         value={props.signupFields.firstName}
         onChange={props.handleChange}
+        required
       />
       <br />
       <label>Last Name:</label>
@@ -17,6 +18,7 @@ const SignupFormView = props => {
         name="lastName"
         value={props.signupFields.lastName}
         onChange={props.handleChange}
+        required
       />
       <br />
       <label>Email:</label>
@@ -25,6 +27,7 @@ const SignupFormView = props => {
         name="email"
         value={props.signupFields.email}
         onChange={props.handleChange}
+        required
       />
       <br />
       <label>Password:</label>
@@ -33,6 +36,7 @@ const SignupFormView = props => {
         name="password"
         value={props.signupFields.password}
         onChange={props.handleChange}
+        required
       />
       <br />
       <button>Sign Up!</button>
