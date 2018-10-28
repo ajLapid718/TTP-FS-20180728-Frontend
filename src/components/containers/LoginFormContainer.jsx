@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LoginFormView } from '../views';
 import { loginUserThunk } from '../../thunks';
@@ -30,6 +31,11 @@ class LoginFormContainer extends Component {
       />
     );
   }
+}
+
+// Type check the data types of the incoming props;
+LoginFormContainer.propTypes = {
+  loginUser: PropTypes.func.isRequired
 }
 
 // Map dispatch to props;
