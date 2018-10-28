@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const LoginFormView = props => {
   return (
@@ -25,5 +26,12 @@ const LoginFormView = props => {
     </form>
   );
 };
+
+// Type check the data types of the incoming props;
+LoginFormView.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  loginFields: PropTypes.object.isRequired
+}
 
 export default LoginFormView;

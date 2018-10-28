@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SignupFormView = props => {
   return (
@@ -43,5 +44,12 @@ const SignupFormView = props => {
     </form>
   );
 };
+
+// Type check the data types of the incoming props;
+SignupFormView.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  signupFields: PropTypes.object.isRequired
+}
 
 export default SignupFormView;

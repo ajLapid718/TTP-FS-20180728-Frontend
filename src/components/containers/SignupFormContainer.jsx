@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SignupFormView } from '../views';
 import { registerUserThunk } from '../../thunks';
@@ -32,6 +33,11 @@ class SignupFormContainer extends Component {
       />
     );
   }
+}
+
+// Type check the data types of the incoming props;
+SignupFormContainer.propTypes = {
+  registerUser: PropTypes.func.isRequired
 }
 
 // Map dispatch to props;
