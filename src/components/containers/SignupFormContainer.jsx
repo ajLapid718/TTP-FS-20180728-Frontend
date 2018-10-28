@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SignupFormView } from '../views';
-// import { signupThunk } from '../../thunks';
+import { registerUserThunk } from '../../thunks';
 
 class SignupFormContainer extends Component {
   constructor() {
@@ -20,7 +20,7 @@ class SignupFormContainer extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    // this.props.signup(this.state.firstName, this.state.lastName, this.state.email, this.state.password);
+    this.props.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password);
   };
 
   render() {
@@ -35,11 +35,11 @@ class SignupFormContainer extends Component {
 }
 
 // Map dispatch to props;
-// const mapDispatch = dispatch => {
-//   return {
-//     signup: (firstName, lastName, email, password) => dispatch(signupThunk(firstName, lastName, email, password))
-//   }
-// }
+const mapDispatch = dispatch => {
+  return {
+    registerUser: (firstName, lastName, email, password) => dispatch(registerUserThunk(firstName, lastName, email, password))
+  }
+}
 
 // Export our store-connected component by default;
-export default connect()(SignupFormContainer);
+export default connect(null, mapDispatch)(SignupFormContainer);

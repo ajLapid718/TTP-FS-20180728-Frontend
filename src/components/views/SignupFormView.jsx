@@ -35,6 +35,7 @@ const SignupFormView = props => {
         onChange={props.handleChange}
       />
       <br />
+      <button>Sign Up!</button>
     </form>
   );
 };
