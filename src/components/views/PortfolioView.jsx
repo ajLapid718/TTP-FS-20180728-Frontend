@@ -7,7 +7,7 @@ const PortfolioView = (props) => {
       {props.personalPortfolio.stocks
       ? props.personalPortfolio.stocks.map(stock => (
           <div>
-            <h4>{stock.tickerSymbol} - {stock.amountOfShares} Shares | {stock.pricePerShare}</h4>
+            <h4>{stock.tickerSymbol} - {stock.amountOfShares} Shares | {stock.pricePerShare} | Current Price: {stock.currentPrice} </h4>
           </div>))
       : null}
     </div>
