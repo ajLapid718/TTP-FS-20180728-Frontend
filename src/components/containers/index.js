@@ -2,3 +2,4 @@
 export { default as SignupFormContainer } from './SignupFormContainer';
 export { default as LoginFormContainer } from './LoginFormContainer';
 export { default as SearchFormContainer } from './SearchFormContainer';
+export { default as TransactionsContainer } from './TransactionsContainer';
