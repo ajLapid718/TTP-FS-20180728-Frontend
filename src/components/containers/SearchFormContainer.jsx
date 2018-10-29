@@ -20,6 +20,7 @@ class SearchFormContainer extends Component {
 
   handleChange = evt => {
     this.setState({ [evt.target.name]: evt.target.value });
+    this.setState({ restrictionMessage: null });
   };
 
   handleSearch = async evt => {
