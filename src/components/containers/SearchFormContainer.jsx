@@ -68,6 +68,12 @@ class SearchFormContainer extends Component {
       .post('/api/transactions', transactionObj)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
+
+    // TODO: Handle logic to append new stocks to the portfolio;
+    // axios
+    //   .post(`/api/portfolio`', transactionObj)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => console.log(err));
   }
 
   render() {
