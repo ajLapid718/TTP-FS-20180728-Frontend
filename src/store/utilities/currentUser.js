@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 // ACTION TYPES;
-const REGISTER_USER = "REGISTER_USER";
-const LOGIN_USER = "LOGIN_USER";
+const REGISTER_USER = 'REGISTER_USER';
+const LOGIN_USER = 'LOGIN_USER';
+const GET_USER = 'GET_USER';
 
 // ACTION CREATORS;
 const registerUser = user => {
@@ -18,6 +19,14 @@ const loginUser = user => {
     payload: user
   }
 }
+
+const getUser = user => {
+  return {
+    type: GET_USER,
+    payload: user
+  }
+}
+
 
 // THUNK CREATORS;
 export const registerUserThunk = (firstName, lastName, email, password) => dispatch => {
@@ -36,12 +45,24 @@ export const loginUserThunk = (email, password) => dispatch => {
     .catch(err => console.log(err))
 }
 
+export const me = () => async dispatch => {
+  try {
+    const res = await axios.get('/auth/me');
+    dispatch(getUser(res.data || {}));
+  }
+  catch (err) {
+    console.error(err);
+  }
+};
+
 // REDUCER;
 const reducer = (state = {}, action) => {
   switch (action.type) {
     case REGISTER_USER:
       return action.payload;
     case LOGIN_USER:
+      return action.payload;
+    case GET_USER:
       return action.payload;
     default:
       return state;
