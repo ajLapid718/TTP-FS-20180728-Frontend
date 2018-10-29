@@ -1,8 +1,13 @@
 import React from 'react';
 import './styles/PortfolioView.css';
+import { Link } from 'react-router-dom';
 
 const PortfolioView = (props) => {
   return (
+    <div>
+    <Link to='/transactions'>My Transaction History</Link>
+    <br />
+    <Link to='/search'>Search</Link>
     <div>
       <h1>Personal Portfolio</h1>
       {props.personalPortfolio.stocks
@@ -18,6 +23,7 @@ const PortfolioView = (props) => {
             <h4> <span className={performanceIndicator}>{stock.tickerSymbol}</span> - {stock.amountOfShares} Shares | {stock.pricePerShare} | Current Value: <span className={performanceIndicator}>{stock.currentPrice * stock.amountOfShares}</span> </h4>
           </div>})
       : null}
+    </div>
     </div>
   );
 };
