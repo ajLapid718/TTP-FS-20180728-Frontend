@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SearchFormView } from '../views';
 import getTickerPrice from '../../utilities/getTickerPrice';
+import axios from 'axios';
 
 class SearchFormContainer extends Component {
   constructor() {
@@ -11,7 +12,8 @@ class SearchFormContainer extends Component {
       tickerPrice: '',
       selectedTicker: '',
       quantity: 1,
-      total: ''
+      total: '',
+      requestType: 'BUY'
     };
   }
 
@@ -38,8 +40,19 @@ class SearchFormContainer extends Component {
   }
 
   handlePurchase = evt => {
+    evt.preventDefault();
     // this is where we'll handle the logic for buying as many whole stocks as our balance permits;
-    // this is where we'll POST the purchase information to our database via a thunk;
+    const transactionObj = {
+      requestType: this.state.requestType,
+      tickerSymbol: this.state.selectedTicker,
+      amountOfShares: Number(this.state.quantity),
+      pricePerShare: this.state.tickerPrice
+    }
+
+    axios
+      .post('/api/transactions', transactionObj)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -49,10 +62,11 @@ class SearchFormContainer extends Component {
         handleChange={this.handleChange}
         handleSearch={this.handleSearch}
         handleCalculate={this.handleCalculate}
+        handlePurchase={this.handlePurchase}
       />
     );
   }
 }
 
 // Export our store-connected component by default;
-export default connect(null, null)(SearchFormContainer);
+export default connect()(SearchFormContainer);
