@@ -12,7 +12,7 @@ const fetchUserTransactions = transactions => {
 }
 
 // THUNK CREATORS;
-export const fetchUserTransactionsThunk = (userId) => dispatch => {
+export const fetchUserTransactionsThunk = userId => dispatch => {
   return axios
     .get(`/api/users/${userId}/transactions`)
     .then(res => res.data)
