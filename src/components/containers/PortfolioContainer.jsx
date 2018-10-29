@@ -7,7 +7,7 @@ class PortfolioContainer extends Component {
 
   // If the pricePerShare (the original price we purchased the stock at) is less than the current day's opening price, display the currentPrice as green;
 
-  // If the pricePerShare (the original price we purchased the stock at) is equal to  the current day's opening price, display the currentPrice as grey;
+  // If the pricePerShare (the original price we purchased the stock at) is equal to the current day's opening price, display the currentPrice as grey;
 
   render() {
     return <PortfolioView personalPortfolio={this.props.personalPortfolio} />;
@@ -17,7 +17,7 @@ class PortfolioContainer extends Component {
 // Map state to props;
 const mapState = state => {
   return {
-    personalPortfolio: state.personalPortfolio.stocks ? state.personalPortfolio.stocks.map(stock => ({...stock, currentPrice: 1234})) : null
+    personalPortfolio: state.personalPortfolio
   }
 }
 
