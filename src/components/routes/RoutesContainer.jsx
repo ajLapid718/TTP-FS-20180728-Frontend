@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import RoutesView from './RoutesView';
 import { me } from '../../thunks';
 
@@ -9,9 +10,16 @@ class RoutesContainer extends Component {
   }
 
   render() {
-    return <RoutesView />
+    return <RoutesView currentUser={this.props.currentUser} />
   }
 }
+
+const mapState = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
 
 // Map dispatch to props;
 const mapDispatch = dispatch => {
@@ -20,4 +28,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(null, mapDispatch)(RoutesContainer);
+export default withRouter(connect(mapState, mapDispatch)(RoutesContainer));
