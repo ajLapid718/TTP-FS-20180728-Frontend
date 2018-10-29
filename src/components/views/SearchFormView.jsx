@@ -13,12 +13,16 @@ const SearchFormView = props => {
 
   const invalidTickerDisplay = <h1>Please enter a valid ticker symbol!</h1>;
 
+  const restrictionMessage = <h1>{props.searchInfo.restrictionMessage}</h1>;
+
   return (
     <div>
       {props.searchInfo.ticker.length &&
       typeof props.searchInfo.tickerPrice === 'number'
         ? validTickerDisplay
         : invalidTickerDisplay}
+
+      {props.searchInfo.restrictionMessage ? restrictionMessage : null}
 
       <form onSubmit={props.handlePurchase}>
         <label>Ticker:</label>

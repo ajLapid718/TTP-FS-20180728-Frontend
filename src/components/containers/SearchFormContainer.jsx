@@ -13,7 +13,8 @@ class SearchFormContainer extends Component {
       selectedTicker: '',
       quantity: 1,
       total: '',
-      requestType: 'BUY'
+      requestType: 'BUY',
+      restrictionMessage: null
     };
   }
 
@@ -29,7 +30,7 @@ class SearchFormContainer extends Component {
     }
     catch (err) {
       console.log(err);
-      this.setState({ticker: "", tickerPrice: "Please enter a valid ticker symbol!"});
+      this.setState({ticker: '', tickerPrice: 'Please enter a valid ticker symbol!'});
     }
   };
 
@@ -41,7 +42,12 @@ class SearchFormContainer extends Component {
 
   handlePurchase = evt => {
     evt.preventDefault();
-    // this is where we'll handle the logic for buying as many whole stocks as our balance permits;
+
+    if (this.props.currentUser.balance < this.state.total) {
+      this.setState({restrictionMessage: 'Insufficient funds'})
+      return;
+    }
+
     const transactionObj = {
       requestType: this.state.requestType,
       tickerSymbol: this.state.selectedTicker,
@@ -68,5 +74,12 @@ class SearchFormContainer extends Component {
   }
 }
 
+// Map state to props;
+const mapState = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
 // Export our store-connected component by default;
-export default connect()(SearchFormContainer);
+export default connect(mapState, null)(SearchFormContainer);
