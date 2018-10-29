@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SearchFormView = props => {
   const validTickerDisplay = (
@@ -14,6 +15,10 @@ const SearchFormView = props => {
   const restrictionMessage = <h1>{props.searchInfo.restrictionMessage}</h1>;
 
   return (
+    <div>
+      <Link to='/transactions'>My Transaction History</Link>
+      <br />
+      <Link to='/portfolio'>My Personal Portfolio</Link>
     <div>
       {props.searchInfo.ticker.length &&
       typeof props.searchInfo.tickerPrice === 'number'
@@ -51,6 +56,7 @@ const SearchFormView = props => {
         />
         <button disabled={!props.isPositiveWholeNumber(Number(props.searchInfo.quantity))}>Purchase</button>
       </form>
+      </div>
     </div>
   );
 };
