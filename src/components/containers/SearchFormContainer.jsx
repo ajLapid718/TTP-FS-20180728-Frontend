@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SearchFormView } from '../views';
 import getTickerPrice from '../../utilities/getTickerPrice';
+import isPositiveWholeNumber from '../../utilities/isPositiveWholeNumber';
 import axios from 'axios';
 
 class SearchFormContainer extends Component {
@@ -37,6 +38,13 @@ class SearchFormContainer extends Component {
 
   handleCalculate = evt => {
     evt.preventDefault();
+    if (isPositiveWholeNumber(Number(this.state.quantity)) === false) {
+      this.setState({restrictionMessage: 'You are only allowed to buy whole, not partial, stocks!'})
+    }
+    else {
+      this.setState({restrictionMessage: null});
+    }
+
     const total = this.state.tickerPrice * this.state.quantity;
     this.setState({total: total});
   }
@@ -70,6 +78,7 @@ class SearchFormContainer extends Component {
         handleSearch={this.handleSearch}
         handleCalculate={this.handleCalculate}
         handlePurchase={this.handlePurchase}
+        isPositiveWholeNumber={isPositiveWholeNumber}
       />
     );
   }

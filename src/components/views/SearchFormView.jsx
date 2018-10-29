@@ -10,9 +10,7 @@ const SearchFormView = props => {
       Total Price: ${props.searchInfo.total}
     </h1>
   );
-
   const invalidTickerDisplay = <h1>Please enter a valid ticker symbol!</h1>;
-
   const restrictionMessage = <h1>{props.searchInfo.restrictionMessage}</h1>;
 
   return (
@@ -51,7 +49,7 @@ const SearchFormView = props => {
           onChange={props.handleChange}
           required
         />
-        <button>Purchase</button>
+        <button disabled={!props.isPositiveWholeNumber(Number(props.searchInfo.quantity))}>Purchase</button>
       </form>
     </div>
   );
