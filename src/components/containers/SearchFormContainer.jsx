@@ -69,11 +69,14 @@ class SearchFormContainer extends Component {
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
 
-    // TODO: Handle logic to append new stocks to the portfolio;
-    // axios
-    //   .post(`/api/portfolio`', transactionObj)
-    //   .then(res => console.log(res.data))
-    //   .catch(err => console.log(err));
+    const updatedPortfolio = Object.assign({}, { stocks: [...this.props.personalPortfolio.stocks, transactionObj] })
+
+    axios
+      .put(`/api/users/${this.props.currentUser.id}/portfolio`, updatedPortfolio)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+
+    this.props.history.push('/transactions');
   }
 
   render() {
@@ -93,7 +96,8 @@ class SearchFormContainer extends Component {
 // Map state to props;
 const mapState = state => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    personalPortfolio: state.personalPortfolio
   }
 }
 
