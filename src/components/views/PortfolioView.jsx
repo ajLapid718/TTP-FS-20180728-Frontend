@@ -14,7 +14,6 @@ const PortfolioView = (props) => {
       ? props.personalPortfolio.stocks.map(stock => {
           let performanceIndicator;
           let difference = stock.currentPrice - stock.pricePerShare;
-          console.log(stock.currentPrice, stock.pricePerShare)
           if (difference < 0) performanceIndicator = "negative";
           if (difference === 0) performanceIndicator = "neutral";
           if (difference > 0) performanceIndicator = "positive";

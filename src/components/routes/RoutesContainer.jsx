@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import RoutesView from './RoutesView';
-import { me, fetchUserTransactionsThunk, fetchUserPortfolioThunk } from '../../thunks';
+import { me, } from '../../thunks';
 
 class RoutesContainer extends Component {
-  async componentDidMount() {
-    await this.props.loadUser();
-    await this.props.fetchUserTransactions(this.props.currentUser.id);
-    await this.props.fetchUserPortfolio(this.props.currentUser.id);
+  componentDidMount() {
+    this.props.loadUser();
   }
 
   render() {
@@ -27,9 +25,7 @@ const mapState = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    loadUser: () => dispatch(me()),
-    fetchUserTransactions: (userId) => dispatch(fetchUserTransactionsThunk(userId)),
-    fetchUserPortfolio: (userId) => dispatch(fetchUserPortfolioThunk(userId))
+    loadUser: () => dispatch(me())
   }
 }
 
