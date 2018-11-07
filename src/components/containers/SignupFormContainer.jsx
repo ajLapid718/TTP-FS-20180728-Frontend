@@ -22,6 +22,7 @@ class SignupFormContainer extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     this.props.registerUser(this.state.firstName, this.state.lastName, this.state.email, this.state.password);
+    this.props.history.push('/search')
   };
 
   render() {

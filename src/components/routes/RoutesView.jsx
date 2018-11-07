@@ -6,6 +6,7 @@ const RoutesView = (props) => {
   return (
     <Switch>
 
+      <Route exact path="/" component={LoginFormContainer} />
       <Route exact path="/signup" component={SignupFormContainer} />
       <Route exact path="/login" component={LoginFormContainer} />
 
