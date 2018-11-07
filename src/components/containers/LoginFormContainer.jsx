@@ -20,6 +20,7 @@ class LoginFormContainer extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     this.props.loginUser(this.state.email, this.state.password);
+    this.props.history.push('/search')
   };
 
   render() {
