@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// const BASE_URL = "https://workforce-stock-server.herokuapp.com";
+const BASE_URL = "https://workforce-stock-server.herokuapp.com";
 
 // ACTION TYPES;
 const REGISTER_USER = 'REGISTER_USER';
@@ -33,7 +33,7 @@ const getUser = user => {
 // THUNK CREATORS;
 export const registerUserThunk = (firstName, lastName, email, password) => dispatch => {
   return axios
-    .post(`/auth/signup`, {firstName, lastName, email, password})
+    .post(`${BASE_URL}/auth/signup`, {firstName, lastName, email, password})
     .then(res => res.data)
     .then(user => dispatch(registerUser(user)))
     .catch(err => console.log(err))
@@ -41,7 +41,7 @@ export const registerUserThunk = (firstName, lastName, email, password) => dispa
 
 export const loginUserThunk = (email, password) => dispatch => {
   return axios
-    .post(`/auth/login`, {email, password})
+    .post(`${BASE_URL}/auth/login`, {email, password})
     .then(res => res.data)
     .then(user => dispatch(loginUser(user)))
     .catch(err => console.log(err))
@@ -49,7 +49,7 @@ export const loginUserThunk = (email, password) => dispatch => {
 
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get(`/auth/me`);
+    const res = await axios.get(`${BASE_URL}/auth/me`);
     dispatch(getUser(res.data || {}));
   }
   catch (err) {
