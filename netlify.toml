@@ -1,4 +1,5 @@
 [[redirects]]
-  to = "/index.html"
+  from = "/*"
+  to = "build/index.html"
   status = 200
   headers = {X-From = "Netlify"}
