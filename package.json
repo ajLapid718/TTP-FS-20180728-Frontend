@@ -22,7 +22,6 @@
     "eject": "react-scripts eject",
     "deploy": "bash script/deploy"
   },
-  "proxy": "http://localhost:1234",
   "eslintConfig": {
     "extends": "react-app"
   },
