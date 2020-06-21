@@ -48,7 +48,7 @@ export const loginUserThunk = (email, password) => dispatch => {
 
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get(`${BASE_URL}/auth/me`);
+    const res = await axios.get(`${BASE_URL}/auth/me`, { withCredentials: true });
     dispatch(getUser(res.data || {}));
   }
   catch (err) {
