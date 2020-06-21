@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "https://workforce-stock-server.herokuapp.com";
+// const BASE_URL = "https://workforce-stock-server.herokuapp.com";
 
 // ACTION TYPES;
 const FETCH_USER_TRANSACTIONS = 'FETCH_USER_TRANSACTIONS';
