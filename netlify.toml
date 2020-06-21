@@ -3,3 +3,9 @@
   to = "https://workforce-stock-server.herokuapp.com/:splat"
   status = 200
   headers = {Access-Control-Allow-Origin = "*"}
+
+[[redirects]]
+  from = "/auth/*"
+  to = "https://workforce-stock-server.herokuapp.com/:splat"
+  status = 200
+  headers = {Access-Control-Allow-Origin = "*"}
