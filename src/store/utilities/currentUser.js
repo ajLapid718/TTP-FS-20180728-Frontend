@@ -41,7 +41,7 @@ export const registerUserThunk = (firstName, lastName, email, password) => dispa
 
 export const loginUserThunk = (email, password) => dispatch => {
   return axios
-    .post(`${BASE_URL}/auth/login`, {email, password})
+    .post(`${BASE_URL}/auth/login`, {email, password}, { withCredentials: true })
     .then(res => res.data)
     .then(user => dispatch(loginUser(user)))
     .catch(err => console.log(err))
@@ -49,7 +49,7 @@ export const loginUserThunk = (email, password) => dispatch => {
 
 export const me = () => async dispatch => {
   try {
-    const res = await axios.get(`${BASE_URL}/auth/me`);
+    const res = await axios.get(`${BASE_URL}/auth/me`), { withCredentials: true };
     dispatch(getUser(res.data || {}));
   }
   catch (err) {
