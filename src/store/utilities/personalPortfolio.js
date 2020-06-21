@@ -17,7 +17,7 @@ const fetchUserPortfolio = portfolio => {
 // THUNK CREATORS;
 export const fetchUserPortfolioThunk = userId => dispatch => {
   return axios
-    .get(`${BASE_URL}/api/users/${userId}/portfolio`)
+    .get(`/api/users/${userId}/portfolio`)
     .then(res => res.data)
     .then(portfolio => dispatch(fetchUserPortfolio(portfolio)))
     .catch(err => console.log(err))

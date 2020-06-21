@@ -1,1 +1,2 @@
-/* index.html 200
+/api/*  https://workforce-stock-server.herokuapp.com/:splat  200
+/auth/*  https://workforce-stock-server.herokuapp.com/:splat  200

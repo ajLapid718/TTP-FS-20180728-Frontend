@@ -16,7 +16,7 @@ const fetchUserTransactions = transactions => {
 // THUNK CREATORS;
 export const fetchUserTransactionsThunk = userId => dispatch => {
   return axios
-    .get(`${BASE_URL}/api/users/${userId}/transactions`)
+    .get(`/api/users/${userId}/transactions`)
     .then(res => res.data)
     .then(transactions => dispatch(fetchUserTransactions(transactions)))
     .catch(err => console.log(err))
