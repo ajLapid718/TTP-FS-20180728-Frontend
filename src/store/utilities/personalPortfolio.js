@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+const BASE_URL = "https://workforce-stock-server.herokuapp.com";
+
+
 // ACTION TYPES;
 const FETCH_USER_PORTFOLIO = 'FETCH_USER_PORTFOLIO';
 
@@ -14,7 +17,7 @@ const fetchUserPortfolio = portfolio => {
 // THUNK CREATORS;
 export const fetchUserPortfolioThunk = userId => dispatch => {
   return axios
-    .get(`/api/users/${userId}/portfolio`)
+    .get(`${BASE_URL}/api/users/${userId}/portfolio`)
     .then(res => res.data)
     .then(portfolio => dispatch(fetchUserPortfolio(portfolio)))
     .catch(err => console.log(err))
