@@ -1,3 +1,2 @@
 [[redirects]]
-  status = 200
   headers = {X-FROM = "https://serene-varahamihira-fbc247.netlify.app"}
